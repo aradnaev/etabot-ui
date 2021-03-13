@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { EscapeHtmlPipe } from './components/pipe_html';
+// import { EscapeHtmlPipe } from './components/pipe_html';
 import { HttpModule, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -100,7 +100,7 @@ import { ReportComponent } from './components/report/report.component';
     JobsMonitorComponent,
     JobCardComponent,
     ReportComponent,
-    EscapeHtmlPipe
+    // EscapeHtmlPipe
   ],
   entryComponents: [
     TermsConditionsFullComponent,
