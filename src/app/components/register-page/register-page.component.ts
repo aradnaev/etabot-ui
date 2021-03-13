@@ -77,8 +77,25 @@ export class RegisterPageComponent implements OnInit {
         this.router.navigate([this.returnUrl]);
       },
       error => {
-        console.log('signup error');
-        this.error_message = error + '; \n' + error._body;
+        console.log('signup error: ' +  error._body);
+
+        let errorDetails = error.json();
+
+        this.error_message = '';
+        
+        if (errorDetails.username) {
+          this.error_message += "Email address already in use.\n";
+        }
+        if (errorDetails.email) {
+          this.error_message += "Please enter a valid email address.\n";
+        }
+        if (errorDetails.password) {
+          this.error_message += "Password must be at least 8 characters long.\n";
+        }
+        if (!(errorDetails.username || errorDetails.email || errorDetails.password)) {
+          this.error_message += `Unknown Error: ${error} - ${error._body}.\nPlease report this to hello@etabot.ai.`;
+        }
+
         this.userFailure = true;
       }
     );

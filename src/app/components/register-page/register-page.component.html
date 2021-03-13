@@ -3,7 +3,7 @@
     <h1>Sign up</h1></mat-card-title>
   <form #f="ngForm" (ngSubmit)="f.form.valid && signup()">
 
-    <div *ngIf="userFailure" class="alert alert-danger" style="font-size: 16px;">Server Error has occurred: {{ error_message }}</div>
+    <div *ngIf="userFailure" class="alert alert-danger" style="font-size: 16px;">{{ error_message }}</div>
 
     <div class="form-group">
       <label for="email" style="font-size: 20px;">Register with your email:</label>

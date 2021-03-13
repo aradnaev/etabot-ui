@@ -47,3 +47,7 @@ h1 {
     display: inline-block;
   }
 }
+
+.alert {
+  white-space: pre-wrap;
+}
