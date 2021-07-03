@@ -14,3 +14,7 @@ button {
 h1 {
     display: inline-block;
 }
+
+#feedback-topic {
+    width: 25%;
+}
