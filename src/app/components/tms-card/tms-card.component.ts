@@ -48,11 +48,29 @@ export class TmsCardComponent implements OnInit {
     } else {
         this.tms_status = {'status': 'unknown', 'description': ''};
     }
+
     if (this.tms.params.projects_user_selected) {
       console.log('this.tms.params.projects_user_selected: ' + this.tms.params.projects_user_selected);
     } else {
       this.tms.params.projects_user_selected = [];
     }
+
+    // Check if old tms-card never had projects importe
+    if (Object.keys(this.tms.params).length <= 1 || !('projects_available' in this.tms.params)) {
+      this.jiraService.patch_username_password_tms(this.tms.id, this.tms.username, this.tms.password)
+        .subscribe(
+          success => {
+            console.log("Missing params, patchinig");
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+              this.router.navigate(["./tmss"]);
+            });
+          },
+          error => {
+            console.log("Missing params, failed to patch: ", error);
+          }
+        );
+    }
+
     if (this.tms.params.projects_available) {
       console.log('this.tms.params.projects_available: ' + this.tms.params.projects_available);
       this.projects = this.tms.params.projects_available.map(project => {
