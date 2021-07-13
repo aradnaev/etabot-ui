@@ -16,6 +16,7 @@ export class ProjectCardComponent implements OnInit {
   @Input() project: any;
   @Input() tms: any;
   @Input() tms_service: any;
+  @Input() api_service: any;
   @Input() show_report_on_init: any;
   @Output() project_update_needed: EventEmitter<any> = new EventEmitter();
   project_obj: Project;
@@ -67,7 +68,8 @@ export class ProjectCardComponent implements OnInit {
       data: {
         tms: tms,
         project: project,
-        tms_service: this.tms_service
+        tms_service: this.tms_service,
+        api_service: this.etabotAPI
       }
     });
   }

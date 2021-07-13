@@ -43,5 +43,16 @@
         <app-tms-card [tms]="tms" [tms_service]="tms_service" style="align-self: center"></app-tms-card>
     </div>
   </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Remove project <app-attention-icon></app-attention-icon>
+    </ng-template>
+    <div style="text-align: center; height: 100%; padding-top: 75px;">
+        <input type="text" style="width: 50%;" placeholder="{{this.project_obj.name}}" id="project-name-input" [(ngModel)]="text">
+        <label for="project-name-input" style="display:block;">Type '{{this.project_obj.name}}' to confirm you want to remove the project.</label>
+        <br>
+        <button mat-raised-button color="accent" (click)="removeProject()" [disabled]="text != this.project_obj.name">Remove Project</button>
+    </div>
+  </mat-tab>
 </mat-tab-group>
 

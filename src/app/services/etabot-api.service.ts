@@ -76,6 +76,21 @@ export class EtabotApiService {
     });
   }
 
+  deleteProject(projectID) {
+    const url = environment.apiUrl + 'projects/' + projectID +'/';
+
+    return this.http.delete(
+      url,
+      this.authService.construct_options()
+    )
+    .pipe(
+      map((response: Response) => {
+        console.log("Delete Project Response: ", response);
+        return response.status;
+      })
+    )
+  }
+
   /*
   Takes in an object with the following parameters
     { subject, body, to, from }
